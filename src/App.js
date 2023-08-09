@@ -1,23 +1,27 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
 function App() {
+  const [text, setText] = useState('');
+
+  const handleTextChange = (event) => {
+    setText(event.target.value);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>Notepad App</h1>
       </header>
+      <main className="App-main">
+        <textarea
+          className="notepad-textarea"
+          value={text}
+          onChange={handleTextChange}
+          placeholder="Start typing here..."
+        />
+        <button className="save-button">Save</button>
+      </main>
     </div>
   );
 }
